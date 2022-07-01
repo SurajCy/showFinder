@@ -6,9 +6,11 @@ import { show } from "./models";
    
     
     const response=await axios.get<{score:number,show:show}[]>(
-    `https://api.tvmaze.com/search/shows?q=${query}`
+    "https://api.tvmaze.com/search/shows?q=" + query
     );
     console.log()
-    return response.data.map((g)=>g.show)
+    return response.data.map((g)=>g.show);
+    console.log("response.data", response.data)
+   
   
 }

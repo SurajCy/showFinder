@@ -15,7 +15,7 @@ export const showFetch=(query:string)=>(
 
 ;
  
-export const showFetched=(shows:show[])=>({
+export const showFetched=(query: string,shows:show[])=>({
     type:SHOW_FETCHED,
-    payload:shows
+    payload:{query,shows}
 })
