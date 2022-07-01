@@ -6,12 +6,12 @@ import { show } from "./models";
 import { rootSaga, sagaMiddeleware } from "./saga";
 
 export type State={
-    shows: show[]
+    shows: {[q:string]:show[]}
     showsQuery:string
 }
 
 const initialState={
-    shows:[],
+    shows:{},
     showsQuerry:""
 }
 
@@ -21,7 +21,8 @@ switch (action.type){
     case SHOW_FETCH:
         return{...state,showsQuery:action.payload}
     case SHOW_FETCHED:
-        return{...state,shows:action.payload}
+        const {query,shows}=action.payload 
+        return{...state,shows:{...state.shows,[query]:shows}}
 
     default:
         return state;
